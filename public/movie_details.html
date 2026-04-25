@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalhes do Filme - CineSwipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container":"#1f1f1f","surface-container-lowest":"#0e0e0e","surface-container-high":"#2a2a2a","surface-container-highest":"#353535","on-surface":"#e2e2e2","on-surface-variant":"#e5bcc4","primary":"#ffb1c3","primary-container":"#ff4b89","on-primary":"#66002c","outline-variant":"#5c3f45","tertiary":"#00dbe9","surface-variant":"#353535",},fontFamily:{"headline":["Space Grotesk"],"body":["Inter"],},},},}
+</script>
+<style>body{background-color:#0e0e0e;color:#e2e2e2;}</style>
+</head>
+<body class="font-body antialiased min-h-screen">
+<header class="sticky top-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/20">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary text-3xl">movie</span>
+      <h1 class="font-headline text-2xl font-bold tracking-tight text-on-surface">CineSwipe</h1>
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-space-grotesk tracking-tight text-sm font-medium">
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="index.html">Home</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="index.html">Discover</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="sell.html">Sell</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="admin.html">Admin</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Library</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Profile</a>
+</div>
+  </div>
+</header>
+
+<main class="container mx-auto px-6 pt-10 pb-20">
+  <div id="movie-content" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="text-center text-on-surface-variant">Carregando detalhes...</div>
+  </div>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const movieId = params.get('id');
+    const container = document.getElementById('movie-content');
+    
+    if (!movieId) {
+      container.innerHTML = '<div class="col-span-full text-center text-error">Filme não especificado. <a href="index.html" class="text-primary underline">Voltar</a></div>';
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/movies/${movieId}`);
+      if (!res.ok) throw new Error('Filme não encontrado');
+      const movie = await res.json();
+      
+      container.innerHTML = `
+        <div class="w-full max-w-lg mx-auto rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,177,195,0.15)]">
+          <img src="${movie.poster_url}" alt="${movie.title}" class="w-full h-auto object-cover aspect-[2/3]">
+        </div>
+        <div class="flex flex-col gap-6">
+          <h1 class="font-headline text-5xl md:text-6xl font-bold text-on-surface leading-tight">${movie.title}</h1>
+          <p class="text-on-surface-variant text-lg leading-relaxed">${movie.description}</p>
+          <div class="text-3xl font-bold text-primary mt-4">$${movie.price.toFixed(2)}</div>
+          
+          <div class="flex flex-col sm:flex-row gap-4 mt-8">
+            <a href="payment.html?id=${movie.id}" class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-full text-center hover:opacity-90 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,177,195,0.4)]">
+              Comprar Agora
+            </a>
+            <a href="index.html" class="px-8 py-4 bg-surface-container-high text-on-surface font-medium rounded-full text-center hover:bg-surface-variant transition-colors border border-outline-variant/30">
+              Voltar ao Catálogo
+            </a>
+          </div>
+        </div>
+      `;
+    } catch (err) {
+      container.innerHTML = `<div class="col-span-full text-center text-error">${err.message}. <a href="index.html" class="text-primary underline">Voltar</a></div>`;
+    }
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const movieId = params.get('id');
+  if (movieId) {
+    try {
+      const res = await fetch('/api/movies/' + movieId);
+      if (res.ok) {
+        const movie = await res.json();
+        const titleEl = document.querySelector('h1');
+        if (titleEl) titleEl.innerText = movie.title;
+        
+        const descEl = Array.from(document.querySelectorAll('p')).find(p => p.innerText.length > 50) || document.querySelector('.text-on-surface-variant');
+        if (descEl) descEl.innerText = movie.description;
+        
+        const priceEl = Array.from(document.querySelectorAll('span, p')).find(s => s.innerText.includes('$'));
+        if (priceEl) priceEl.innerText = '$' + movie.price.toFixed(2);
+
+        const buyBtn = Array.from(document.querySelectorAll('button, a')).find(b => b.innerText.includes('Buy') || b.innerText.includes('Get') || b.innerText.includes('Confirm'));
+        if (buyBtn) {
+          buyBtn.onclick = (e) => {
+            e.preventDefault();
+            window.location.href = 'payment.html?id=' + movie.id;
+          };
+        }
+        
+        const img = document.querySelector('img.object-cover');
+        if (img) img.src = movie.poster_url;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+});
+</script>
+</body>
+</html>
