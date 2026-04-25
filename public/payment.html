@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#353535",
+                    "surface-variant": "#353535",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#002f33",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "inverse-on-surface": "#303030",
+                    "on-primary-container": "#590026",
+                    "primary-fixed-dim": "#ffb1c3",
+                    "on-primary-fixed": "#3f0019",
+                    "primary-container": "#ff4b89",
+                    "on-tertiary-fixed": "#002022",
+                    "on-secondary-container": "#bab8b7",
+                    "primary": "#ffb1c3",
+                    "secondary-container": "#4a4949",
+                    "inverse-surface": "#e2e2e2",
+                    "secondary": "#c8c6c5",
+                    "tertiary-fixed": "#7df4ff",
+                    "on-primary": "#66002c",
+                    "on-surface": "#e2e2e2",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "on-secondary": "#313030",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "tertiary-container": "#00a0aa",
+                    "primary-fixed": "#ffd9e0",
+                    "secondary-fixed": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "background": "#131313",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "inverse-primary": "#bb0058",
+                    "surface": "#131313",
+                    "on-background": "#e2e2e2",
+                    "error": "#ffb4ab",
+                    "outline": "#ac878f",
+                    "surface-container-high": "#2a2a2a",
+                    "on-secondary-fixed-variant": "#474646",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#1b1b1b",
+                    "on-tertiary": "#00363a",
+                    "tertiary": "#00dbe9",
+                    "outline-variant": "#5c3f45",
+                    "on-surface-variant": "#e5bcc4",
+                    "surface-tint": "#ffb1c3",
+                    "surface-container": "#1f1f1f",
+                    "surface-dim": "#131313",
+                    "on-primary-fixed-variant": "#8f0041",
+                    "surface-bright": "#393939",
+                    "on-error": "#690005"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "display": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e2e2e2;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(255, 75, 137, 0.2);
+        }
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            background-color: rgba(31, 31, 31, 0.6);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Shell (Suppressing Global Nav for Focused Task) -->
+<header class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] flex items-center justify-between px-8 py-4 w-full h-20">
+<div class="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-[#FF007A] to-[#FF4B89] font-display">
+            CineSwipe
+        </div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-zinc-400 font-label text-sm">
+<span class="material-symbols-outlined text-sm">lock</span>
+                SECURE CHECKOUT
+            </div>
+<button class="hover:bg-white/5 p-2 rounded-full transition-all duration-300 scale-95 active:scale-90">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+</div>
+</header>
+<main class="min-h-screen pt-28 pb-12 px-6 lg:px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Side: Order Summary & Visuals -->
+<div class="lg:col-span-5 space-y-8">
+<div class="relative group">
+<!-- Movie Poster Card -->
+<div class="aspect-[2/3] w-full rounded-lg overflow-hidden relative shadow-2xl">
+<img alt="Movie Poster" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Cinematic movie poster with neon blue and magenta lighting, a lonely protagonist standing in a futuristic rain-slicked street at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtEX7_E4Ut6EipV4p4HbpivO6AgaBFSpIofMoTX2ZlElPzrSDADI9eshnNvQ4Fcbt9YRL6nRI6m513Ja9vSkHnmWPlai4_EmmDxs_AoGseRdQKe6GKkJUDs6IlUDg5nws0ybosrV4_EH1sfD0ZGCkc16yg9BN_6i7H_NQFmLNopm2E7-dvXnwlkhMtHGi9Ja34D1Tk98NIRGh5B-15EXuSD_x3t2dKDlH_tyLg2_npxIcDJyJrFh-FJzRn2Et2FrruJhsz-nDznbE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">Digital Premium</span>
+<h2 class="text-4xl font-display font-bold tracking-tight text-white mb-2 leading-none">Neon Nights: Tokyo Drift</h2>
+<p class="text-on-surface-variant font-body text-sm">Director's Cut • 4K Ultra HD</p>
+</div>
+</div>
+<!-- Ambient Glow -->
+<div class="absolute -inset-4 bg-primary/5 blur-3xl -z-10 rounded-full"></div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-6 space-y-4">
+<h3 class="text-lg font-display font-semibold text-primary">Order Summary</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Movie Purchase</span>
+<span class="text-on-surface font-medium">$24.99</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Platform Service Fee</span>
+<span class="text-on-surface font-medium">$1.50</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Exclusive Content Pack</span>
+<span class="text-on-surface font-medium">Included</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex justify-between items-end">
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Total Amount</p>
+<p class="text-3xl font-display font-bold text-white">$26.49</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-tertiary-fixed-dim bg-tertiary-fixed-dim/10 px-2 py-1 rounded-full inline-block">10% Points Back</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Payment Form -->
+<div class="lg:col-span-7 space-y-8">
+<div>
+<h1 class="text-5xl font-display font-extrabold tracking-tighter text-white mb-2">Checkout</h1>
+<p class="text-on-surface-variant font-body">Complete your transaction to start streaming immediately.</p>
+</div>
+<!-- Payment Method Toggle -->
+<div class="flex p-1 bg-surface-container rounded-full w-fit">
+<button class="px-8 py-2.5 rounded-full bg-primary text-on-primary font-bold text-sm transition-all shadow-lg neon-glow-primary">
+                        Credit Card
+                    </button>
+<button class="px-8 py-2.5 rounded-full text-on-surface-variant hover:text-on-surface font-medium text-sm transition-all">
+                        PIX
+                    </button>
+</div>
+<!-- Form Section -->
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-full space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Cardholder Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-on-surface placeholder:text-surface-variant focus:ring-2 focus:ring-primary/50 transition-all font-label" placeholder="JONATHAN DOE" type="text"/>
+</div>
+<div class="col-span-full space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Card Number</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 pl-14 text-on-surface placeholder:text-surface-variant focus:ring-2 focus:ring-primary/50 transition-all font-label" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">credit_card</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Expiry Date</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-on-surface placeholder:text-surface-variant focus:ring-2 focus:ring-primary/50 transition-all font-label" placeholder="MM/YY" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">CVV</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-on-surface placeholder:text-surface-variant focus:ring-2 focus:ring-primary/50 transition-all font-label" placeholder="***" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-3 py-2">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container-high text-primary focus:ring-primary focus:ring-offset-background" id="save-card" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="save-card">Save card details for future screenings</label>
+</div>
+<!-- CTA Section -->
+<div class="pt-4">
+<button class="w-full py-5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-display font-bold text-xl flex items-center justify-center gap-3 hover:opacity-90 transition-all active:scale-[0.98] shadow-2xl neon-glow-primary group">
+<span>Authorize Payment</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant mt-6 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                            SSL Encrypted &amp; AES-256 Protected Transaction
+                        </p>
+</div>
+</div>
+<!-- Related/Promo Bento Minimal -->
+<div class="pt-8 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 rounded bg-tertiary-container/20 flex items-center justify-center text-tertiary-fixed-dim">
+<span class="material-symbols-outlined">confirmation_number</span>
+</div>
+<div>
+<p class="text-xs font-bold text-white">Gift this film</p>
+<p class="text-[10px] text-on-surface-variant">Send a digital code</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 rounded bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">redeem</span>
+</div>
+<div>
+<p class="text-xs font-bold text-white">Have a promo?</p>
+<p class="text-[10px] text-on-surface-variant">Apply code here</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Security Badges -->
+<footer class="py-12 border-t border-outline-variant/10 mt-12">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+<div class="flex items-center gap-8">
+<span class="font-display font-bold text-lg tracking-tighter">VISA</span>
+<span class="font-display font-bold text-lg tracking-tighter italic">Mastercard</span>
+<span class="font-display font-bold text-lg tracking-tighter">AMEX</span>
+<span class="font-display font-bold text-lg tracking-tighter">PayPal</span>
+</div>
+<div class="text-xs font-body text-on-surface-variant">
+                © 2024 CineSwipe Labs. All rights reserved. Cinematic license granted for private viewing only.
+            </div>
+</div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const movieId = params.get('id');
+    let currentMovie = null;
+    
+    if (movieId) {
+      const res = await fetch(`/api/movies/${movieId}`);
+      if (res.ok) {
+         currentMovie = await res.json();
+         const titleEls = Array.from(document.querySelectorAll('h3, h2'));
+         const titleEl = titleEls.find(e => e.innerText.includes('Dune') || e.innerText.includes('Movie'));
+         if (titleEl) titleEl.innerText = currentMovie.title;
+         
+         const priceEls = document.querySelectorAll('span, div');
+         const priceEl = Array.from(priceEls).find(s => s.innerText.includes('$'));
+         if (priceEl) priceEl.innerText = '$' + currentMovie.price.toFixed(2);
+      }
+    }
+    
+    const confirmBtn = Array.from(document.querySelectorAll('button')).find(b => b.innerText.includes('Confirm') || b.innerText.includes('Pay') || b.innerText.includes('Complete'));
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', async (e) => {
+         e.preventDefault();
+         if (!currentMovie) return;
+         confirmBtn.innerText = 'Processing...';
+         await fetch('/api/checkout', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({ movie_id: currentMovie.id, buyer_name: 'User', amount: currentMovie.price, payment_method: 'credit_card' })
+         });
+         window.location.href = 'index.html';
+      });
+    }
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const movieId = params.get('id');
+  let currentMovie = null;
+
+  if (movieId) {
+    try {
+      const res = await fetch('/api/movies/' + movieId);
+      if (res.ok) {
+        currentMovie = await res.json();
+        const titleEl = document.querySelector('h3') || document.querySelector('h2');
+        if (titleEl) titleEl.innerText = currentMovie.title;
+        
+        const priceEl = Array.from(document.querySelectorAll('span, div')).find(s => s.innerText.includes('$'));
+        if (priceEl) priceEl.innerText = '$' + currentMovie.price.toFixed(2);
+      }
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  const confirmBtn = Array.from(document.querySelectorAll('button')).find(b => b.innerText.includes('Confirm') || b.innerText.includes('Pay'));
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (!currentMovie) return;
+      confirmBtn.innerText = 'Processing...';
+      try {
+        await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            movie_id: currentMovie.id,
+            buyer_name: 'Admin User',
+            amount: currentMovie.price,
+            payment_method: 'credit_card'
+          })
+        });
+        alert('Purchase successful!');
+        window.location.href = 'index.html';
+      } catch(err) {
+        alert('Error processing payment');
+        confirmBtn.innerText = 'Try Again';
+      }
+    });
+  }
+});
+</script>
+</body></html>
