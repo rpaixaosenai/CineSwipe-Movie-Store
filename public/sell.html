@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineSwipe | Sell Movie</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#353535",
+                        "surface-variant": "#353535",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#002f33",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-container": "#590026",
+                        "primary-fixed-dim": "#ffb1c3",
+                        "on-primary-fixed": "#3f0019",
+                        "primary-container": "#ff4b89",
+                        "on-tertiary-fixed": "#002022",
+                        "on-secondary-container": "#bab8b7",
+                        "primary": "#ffb1c3",
+                        "secondary-container": "#4a4949",
+                        "inverse-surface": "#e2e2e2",
+                        "secondary": "#c8c6c5",
+                        "tertiary-fixed": "#7df4ff",
+                        "on-primary": "#66002c",
+                        "on-surface": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-secondary": "#313030",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "tertiary-container": "#00a0aa",
+                        "primary-fixed": "#ffd9e0",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#bb0058",
+                        "surface": "#131313",
+                        "on-background": "#e2e2e2",
+                        "error": "#ffb4ab",
+                        "outline": "#ac878f",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#1b1b1b",
+                        "on-tertiary": "#00363a",
+                        "tertiary": "#00dbe9",
+                        "outline-variant": "#5c3f45",
+                        "on-surface-variant": "#e5bcc4",
+                        "surface-tint": "#ffb1c3",
+                        "surface-container": "#1f1f1f",
+                        "surface-dim": "#131313",
+                        "on-primary-fixed-variant": "#8f0041",
+                        "surface-bright": "#393939",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px -3px rgba(255, 75, 137, 0.4);
+        }
+        .glass-panel {
+            background: rgba(31, 31, 31, 0.4);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] h-20 flex items-center justify-between px-8">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-[#FF007A] to-[#FF4B89] font-display">CineSwipe</span>
+<div class="hidden md:flex items-center gap-8 font-space-grotesk tracking-tight text-sm font-medium">
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="index.html">Home</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="index.html">Discover</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="sell.html">Sell</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="admin.html">Admin</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Library</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Profile</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-zinc-400 hover:text-white transition-all scale-95 active:scale-90">notifications</button>
+<button class="material-symbols-outlined text-zinc-400 hover:text-white transition-all scale-95 active:scale-90">settings</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="close up portrait of a stylish woman with neon lighting reflecting on her face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6-S67WakbYvaa12gwq1PEyynyc-W2oROj6WKPgYr7rpOqtiCf-xI2qEC1Hy2DnBSyJuIKmxxJM5hyeJ664KjKA2aTmCxmaww5zYneb8GUPLBBTrGaFzQ3YY3QYhheJ2w5Jjj7pdV634PVMdfg4oFlmJ4xCwIPFwRHG8v2p-lCzhxlD9JJJ6nR_3PGETBd_YMgUIBadXeubbnzeCW8l0xKa-8ts20XO0XHPB12D5OZrL0jCblUKGB-RYQGQ3_dWnyT0EXf-Dm7dOc"/>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+<header class="mb-16">
+<h1 class="font-display text-5xl font-bold tracking-tight mb-4">List Your Masterpiece</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg">Bring your cinematic vision to the marketplace. Define your price, showcase your craft, and find your audience in the neon depths of CineSwipe.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left: Form Section -->
+<section class="lg:col-span-7 space-y-12">
+<!-- Poster Upload Area -->
+<div class="group relative aspect-[16/9] w-full rounded-lg bg-surface-container overflow-hidden flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 hover:border-primary/50 transition-all duration-500 cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-dim/80"></div>
+<div class="relative z-10 flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container mb-2">
+<span class="material-symbols-outlined text-3xl">upload_file</span>
+</div>
+<p class="font-display text-xl font-medium">Upload Hero Poster</p>
+<p class="text-sm text-on-surface-variant">Drag and drop or click to browse (1920x1080 recommended)</p>
+</div>
+</div>
+<!-- Basic Details Form -->
+<div class="space-y-8">
+<div class="space-y-6">
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3 px-1">Movie Title</label>
+<input class="w-full bg-surface-container border-none rounded-lg p-5 text-xl font-display focus:ring-2 focus:ring-primary-container transition-all placeholder:text-surface-container-highest" placeholder="Enter the feature name..." type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3 px-1">Genre</label>
+<div class="relative">
+<select class="w-full bg-surface-container border-none rounded-lg p-5 appearance-none focus:ring-2 focus:ring-primary-container transition-all text-on-surface">
+<option>Neo-Noir</option>
+<option>Cyberpunk</option>
+<option>Psychological Thriller</option>
+<option>Indie Drama</option>
+</select>
+<span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3 px-1">Asking Price ($)</label>
+<input class="w-full bg-surface-container border-none rounded-lg p-5 text-xl font-display focus:ring-2 focus:ring-primary-container transition-all placeholder:text-surface-container-highest" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3 px-1">Story Brief</label>
+<textarea class="w-full bg-surface-container border-none rounded-lg p-5 focus:ring-2 focus:ring-primary-container transition-all placeholder:text-surface-container-highest resize-none" placeholder="In a world where light is a currency..." rows="5"></textarea>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-display font-bold text-lg tracking-tight hover:brightness-110 active:scale-[0.98] transition-all neon-glow">
+                            Publish to Marketplace
+                        </button>
+</div>
+</div>
+</section>
+<!-- Right: Sales Preview Section -->
+<aside class="lg:col-span-5 sticky top-32">
+<div class="bg-surface-container-low rounded-lg p-8 border border-outline-variant/10">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-8">Marketplace Preview</h2>
+<!-- Preview Card -->
+<div class="rounded-lg overflow-hidden bg-surface-container shadow-2xl group transition-transform hover:-translate-y-2">
+<div class="relative aspect-[2/3] w-full">
+<img class="w-full h-full object-cover" data-alt="dramatic cinematic movie poster style image featuring a lone silhouette in a rainy city street with pink and cyan neon signs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3bf-xTwcJrcbiqMOBY8nArPpXkr0RtrWdgjFZwxSBlhAo3a1cbwaDQttadmM3_W1J72Srhio-QpR5W6tUJ4-zS-0oDwwoxukHLdTsfUQ8PgdHvwjmtPI1WinQ35AfDIJEZNI3HDZv2k0EywFo_eO8hRWDQTPs8bQHRtvGCBhAlSWiNhihjn7Fi0vIP14RrhrxbpSrMG1kYGyrv4Bztt7vzx-twW7ra9A2GFZ7mNFbKdB2eM1mqw3z6eJ_mBZ6NPXoVXRHtBAnDGI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4 bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">New Listing</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl font-display font-bold tracking-tight">Untitled Vision</h3>
+<p class="text-sm text-on-surface-variant">Neo-Noir • 2024</p>
+</div>
+<div class="text-right">
+<span class="block text-xl font-display font-bold text-primary">$0.00</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-3 italic">"The story brief will appear here, detailing the journey through the lens of your cinematic creation."</p>
+<div class="flex gap-4 pt-2">
+<div class="flex-1 h-12 bg-surface-container-highest/50 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm mr-2">visibility</span>
+<span class="text-xs font-medium">Preview</span>
+</div>
+<div class="flex-1 h-12 border border-primary/30 text-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm mr-2">shopping_bag</span>
+<span class="text-xs font-medium">Buy Now</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Marketplace Stats -->
+<div class="mt-8 grid grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-high">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Platform Fee</p>
+<p class="text-lg font-display font-bold">2.5%</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-high">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Reach Estimate</p>
+<p class="text-lg font-display font-bold">12k+</p>
+</div>
+</div>
+</div>
+<!-- Listing Tips -->
+<div class="mt-8 px-4 flex gap-4 items-center">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<p class="text-sm font-medium">Pro Tip</p>
+<p class="text-xs text-on-surface-variant">High-contrast posters with clear titles receive 40% more engagement on CineSwipe.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Decorative Glow -->
+<div class="fixed bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-container/20 to-transparent"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = Array.from(document.querySelectorAll('button')).find(b => b.innerText.includes('Sell') || b.innerText.includes('List') || b.innerText.includes('Add'));
+    
+    if (btn) {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        const inputs = Array.from(document.querySelectorAll('input, textarea'));
+        const titleInput = inputs.find(i => i.placeholder.toLowerCase().includes('title') || (i.previousElementSibling && i.previousElementSibling.innerText.includes('Title')));
+        const descInput = inputs.find(i => i.tagName === 'TEXTAREA' || i.placeholder.toLowerCase().includes('brief'));
+        const priceInput = inputs.find(i => i.placeholder.includes('$') || i.type === 'number');
+        const posterInput = inputs.find(i => i.placeholder.toLowerCase().includes('url') || i.type === 'url' || (i.previousElementSibling && i.previousElementSibling.innerText.includes('URL')));
+        
+        const title = titleInput ? titleInput.value : 'New Indie Movie';
+        const description = descInput ? descInput.value : 'A new listing.';
+        const price = priceInput ? parseFloat(priceInput.value) || 19.99 : 19.99;
+        const poster_url = posterInput ? posterInput.value : 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&w=800&q=80';
+        
+        btn.innerText = 'Saving...';
+        
+        try {
+          await fetch('/api/movies', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description, price, poster_url })
+          });
+          window.location.href = 'index.html';
+        } catch(err) {
+          alert('Error connecting to server');
+          btn.innerText = 'Try Again';
+        }
+      });
+    }
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = Array.from(document.querySelectorAll('button')).find(b => b.innerText.includes('Sell') || b.innerText.includes('List') || b.innerText.includes('Register'));
+  if (btn) {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const inputs = Array.from(document.querySelectorAll('input, textarea'));
+      const title = inputs.find(i => i.placeholder?.toLowerCase().includes('title') || i.id?.includes('title'))?.value || 'New Movie';
+      const description = inputs.find(i => i.tagName === 'TEXTAREA')?.value || 'No description.';
+      const price = parseFloat(inputs.find(i => i.placeholder?.includes('$') || i.id?.includes('price'))?.value) || 19.99;
+      const poster_url = inputs.find(i => i.placeholder?.toLowerCase().includes('url') || i.id?.includes('poster'))?.value || 'https://images.unsplash.com/photo-1536440136628-849c177e76a1';
+      
+      btn.innerText = 'Saving...';
+      try {
+        await fetch('/api/movies', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title, description, price, poster_url })
+        });
+        window.location.href = 'admin.html';
+      } catch(err) {
+        alert('Error saving movie');
+        btn.innerText = 'Try Again';
+      }
+    });
+  }
+});
+</script>
+</body></html>
