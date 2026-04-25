@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discover - CineSwipe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#353535",
+                        "surface-variant": "#353535",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#002f33",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-container": "#590026",
+                        "primary-fixed-dim": "#ffb1c3",
+                        "on-primary-fixed": "#3f0019",
+                        "primary-container": "#ff4b89",
+                        "on-tertiary-fixed": "#002022",
+                        "on-secondary-container": "#bab8b7",
+                        "primary": "#ffb1c3",
+                        "secondary-container": "#4a4949",
+                        "inverse-surface": "#e2e2e2",
+                        "secondary": "#c8c6c5",
+                        "tertiary-fixed": "#7df4ff",
+                        "on-primary": "#66002c",
+                        "on-surface": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-secondary": "#313030",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "tertiary-container": "#00a0aa",
+                        "primary-fixed": "#ffd9e0",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#bb0058",
+                        "surface": "#131313",
+                        "on-background": "#e2e2e2",
+                        "error": "#ffb4ab",
+                        "outline": "#ac878f",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#1b1b1b",
+                        "on-tertiary": "#00363a",
+                        "tertiary": "#00dbe9",
+                        "outline-variant": "#5c3f45",
+                        "on-surface-variant": "#e5bcc4",
+                        "surface-tint": "#ffb1c3",
+                        "surface-container": "#1f1f1f",
+                        "surface-dim": "#131313",
+                        "on-primary-fixed-variant": "#8f0041",
+                        "surface-bright": "#393939",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e2e2e2;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-auto-rows: 10px;
+            gap: 24px;
+        }
+        .masonry-item-tall { grid-row-end: span 45; }
+        .masonry-item-med { grid-row-end: span 35; }
+        .glass-panel {
+            background: rgba(31, 31, 31, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px rgba(255, 75, 137, 0.3);
+        }
+        ::-webkit-scrollbar { width: 0px; height: 0px; }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-white">
+<!-- TopNavBar Anchor -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl flex items-center justify-between px-8 py-4 w-full h-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)]">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-[#FF007A] to-[#FF4B89] font-headline">CineSwipe</span>
+<div class="hidden md:flex items-center gap-8 font-space-grotesk tracking-tight text-sm font-medium">
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="index.html">Home</a>
+<a class="text-[#FF007A] font-bold border-b-2 border-[#FF007A] pb-1" href="index.html">Discover</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="sell.html">Sell</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="admin.html">Admin</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Library</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Profile</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm">search</span>
+<input class="bg-surface-container border-none rounded-full py-2 pl-10 pr-6 text-sm w-64 focus:ring-1 focus:ring-primary-container text-on-surface" placeholder="Search films, actors, directors..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-400 hover:bg-white/5 transition-all duration-300 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-zinc-400 hover:bg-white/5 transition-all duration-300 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Genre Sub-Nav (Sticky) -->
+<div class="fixed top-20 w-full z-40 bg-background/80 backdrop-blur-md px-8 py-4 overflow-x-auto whitespace-nowrap scroll-smooth">
+<div class="flex gap-4">
+<button class="px-6 py-2 rounded-full bg-primary-container text-white font-medium text-sm transition-transform active:scale-95">All Trends</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">Cyberpunk</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">Neo-Noir</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">Space Opera</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">Psychological</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">Indie Documentaries</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">A24 Studio</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm transition-all border border-transparent hover:border-outline-variant/20">Cannes Selects</button>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="pt-40 pb-20 px-8 max-w-[1600px] mx-auto">
+<!-- Mood Category: Late Night Thrills -->
+<section class="mb-20">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-4xl font-headline font-bold tracking-tight text-on-surface mb-2">Late Night Thrills</h2>
+<p class="text-on-surface-variant font-body">Deep shadows, neon lights, and high stakes.</p>
+</div>
+<button class="text-primary font-medium hover:underline flex items-center gap-1">
+                    See full catalog <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="masonry-grid">
+<!-- Movie Card: Dune Part Two -->
+<div class="masonry-item-tall group relative overflow-hidden rounded-lg bg-surface-container-low neon-glow transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" data-alt="Cinematic desert landscape with vast rolling orange sand dunes under a hazy atmospheric sky, epic scale, science fiction mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDzk4c271ZHvjMNc8gVVgltutnUcWTM7nMZ8I_XBOeAk6W-pa7d-EuWW1w5o2kSohJkBazE04o3C9aFL2xHFaraoXHT-WoHOftTpnPC7JqkIM7da_s3U2Ee15qr7BOCo4ftnqyQP_aNfIyFLUyvHVZCux4QORVMcBc9_SjgoZtMGgp3HllwiPeH6zCBug5TU3YogaL6n1rmGIHMM-3jyl6Y5SpSix9QXmiXym7iq0Q4dJxTT5N8EaPtK2jcmCjs4s-jaXplJAVIXc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6 w-full">
+<span class="px-2 py-1 bg-primary-container/20 border border-primary-container/40 text-primary text-[10px] uppercase tracking-widest rounded mb-3 inline-block">Trending</span>
+<h3 class="text-2xl font-headline font-bold text-white leading-tight">Dune: Part Two</h3>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
+<span>2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Sci-Fi / Drama</span>
+</div>
+</div>
+</div>
+<!-- Movie Card: Oppenheimer -->
+<div class="masonry-item-med group relative overflow-hidden rounded-lg bg-surface-container-low neon-glow transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" data-alt="Dramatic close-up of a vintage laboratory with glowing orange sparks and mysterious industrial machinery, dark cinematic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy7MGxo8s1wi_HeBqpuC2ippLxnQfFw0QY63rPDKK49zUv-NXskLF43m6rOYUz7n3ZLOwXch9ThTRjI0NmE0jE3_RtRaBb9tOFIOiTLGfIUxkkSaOfD5oCBu-jhcQ-MqwM9VP2gY7PcI4oy7w5y5eOrBndvftoLGbPf3f35pXCHo1FuX4xYFMdJRcyQstEdvWn1Rlc3-8ixgIYC2c3kRmXJqD9DSSSO62u7NFBukGkYHcgpXSvMaajOWm_DKbHUzEuHECD5HZyrKc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6 w-full">
+<h3 class="text-2xl font-headline font-bold text-white leading-tight">Oppenheimer</h3>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
+<span>2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Biography / History</span>
+</div>
+</div>
+</div>
+<!-- Movie Card: Spider-Man -->
+<div class="masonry-item-tall group relative overflow-hidden rounded-lg bg-surface-container-low neon-glow transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" data-alt="Stylized urban cityscape at night with vibrant pink and blue neon lights reflected in rain-slicked streets, comic book aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiQ_8CkMFJRPSOs_XInqTNL0Q08zf8SWxmWGHRnDc7Vzk4b-9UbjC-StQO4fYaK8TBg3kQKKFhidD0Wa1WrIGqIFXm40PkZcyWzLOB147HHYRyc3Gg9Vb4bwcn_O4FSWTxF_k_0bnNWunxh7D13NagBJBbZBUw1Kfqr5oWBxuqGqZ7IZtm3tWE6SqwyJkf5JiUEu2ca1oiXw_cQ3fQZmeK-I48gXIocYjQ4SIKHbheC1ixUVPgaI-Vrh0_M7OHn-IlsQwbSSgphOM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6 w-full">
+<span class="px-2 py-1 bg-tertiary-container/20 border border-tertiary-container/40 text-tertiary text-[10px] uppercase tracking-widest rounded mb-3 inline-block">Editor's Choice</span>
+<h3 class="text-2xl font-headline font-bold text-white leading-tight">Spider-Man: Across the Spider-Verse</h3>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
+<span>2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Animation / Action</span>
+</div>
+</div>
+</div>
+<!-- Additional Thematic Card -->
+<div class="masonry-item-med group relative overflow-hidden rounded-lg bg-surface-container-low neon-glow transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" data-alt="Dark moody cinema interior with glowing red exit sign and soft light hitting empty velvet seats, cinematic atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFI4YHmIXxMP0k9fYb9FhkT-8HQq0VF1wzpjddlsur0KY5Dm24OsblSx_bHUlltXlWSL-pzETs1T-SO1RQVYrDBp2-dOthro1A1rcF-aATeaIMG_WANO5uXu9QH-ZcO9Nmjrq8SX8upmwTz2veFR9UtkcaiKDaYE-u6ixg1qxfNadrGd3lb9rVRn8932bFKwbdxM0tB_uiZohr8Vq88v-LtbG_uaLRGY24pZPsPTPTc2sHh3nKu--k8duhbsZTOOX4qzGWvCeYERU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6 w-full">
+<h3 class="text-2xl font-headline font-bold text-white leading-tight">The Killer</h3>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
+<span>2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Thriller / Noir</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mood Category: Sunday Morning Vibes -->
+<section class="mb-20">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-4xl font-headline font-bold tracking-tight text-on-surface mb-2">Sunday Morning Vibes</h2>
+<p class="text-on-surface-variant font-body">Soft light, slow burns, and heartwarming narratives.</p>
+</div>
+<button class="text-primary font-medium hover:underline flex items-center gap-1">
+                    See full catalog <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Large Feature Card -->
+<div class="col-span-1 md:col-span-2 group relative h-[500px] rounded-lg overflow-hidden bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="Soft morning sunlight streaming through a large window onto a cozy library with dust motes dancing in the air, peaceful mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtmS78IiVlNY0T8V67QzZWISNMA2YgNpTuDJy1DSOldkHGtk3UWZWch_9QMFRyjlZv3RrWQhoDPjkgLzTqY81iZsZvkm0Dm1DYhvyaEHj5ZuRMBXqPmMqU94XWvVUFlYchT6_9jSNtv_bk_UtLiftyl34wEbXmRkh8RFbo5-Ywqs4nroADMHv1mU5_g8eFT5ppMGC0kLiK7shBPvO-t9-Hq466n3wv_7ruIDgg-rYsMhM_O785JcNGOU7jt_SCd02ZAO4GA1UibIY"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent"></div>
+<div class="relative h-full flex flex-col justify-center p-12 max-w-lg">
+<h3 class="text-5xl font-headline font-extrabold text-white mb-4 leading-tight">Past Lives</h3>
+<p class="text-on-surface-variant text-lg mb-8">A decades-spanning exploration of destiny, love, and the choices that make a life.</p>
+<div class="flex gap-4">
+<button class="px-8 py-3 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold transition-transform active:scale-90 flex items-center gap-2">
+<span class="material-symbols-outlined">play_arrow</span> Watch Now
+                            </button>
+<button class="px-8 py-3 rounded-full bg-surface-variant/40 backdrop-blur-xl border border-outline-variant/20 text-white font-bold transition-transform active:scale-90">
+                                Details
+                            </button>
+</div>
+</div>
+</div>
+<!-- Secondary Card -->
+<div class="group relative h-[500px] rounded-lg overflow-hidden bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="Lush green garden at dawn with dewdrops on leaves and soft hazy golden lighting, serene and natural aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVIWW1PNNlMYy7yvnIafn1l_sWERmi3cYlByefb6DHlVc1aqz045L9eVIO6wmmPlVd4YLckA0rC4VibPMfA7yG3w_Kri4UMlHy0O3mL0PIfKW3CoRsz_dmneY-S-SHs59VOKR3rGQXuQsa2vorguNRo1WmOhp54P12btzXPNfvb2ur9FpQWccHEKMK8RExKVTy-cZQMQN8VBOYzkHCzDd9c4EqOb0rr2AZV9v0fPzR6mJcgQ9bNCBguGaaAU2Z6_dHXkYD5BK-x0c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<h3 class="text-3xl font-headline font-bold text-white mb-2">The Holdovers</h3>
+<p class="text-on-surface-variant text-sm">A heartwarming tale of unlikely connection during a snowy holiday season.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Spotlight Section -->
+<section class="mb-20">
+<h2 class="text-4xl font-headline font-bold tracking-tight text-on-surface mb-12">The Director's Cut</h2>
+<div class="grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
+<div class="col-span-2 row-span-2 rounded-lg bg-surface-container overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="Abstract cinematic light leaks with deep purple and hot pink hues, grainy film texture, experimental photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMtswH7KnRE8q67kG-LwqAlehfd8opFOe-rTZUbx6wYEliVGCuK3W_M5F71sCJ34-IWEPzTpokXRpDkAuQA8mBu68GEzJFd7AVqwcGLszCmir7uBDfeHVn2YRnArXuwDa2yL80CqczMMkbVneBqYnQJMIMPhtxKma_zV2M72YS1W0iulmGqKMeXhLv9WDDPHw5Bh11r4RdOl2YhTLMEORtelkncHSOyLLgaXeByecTsAzckOJQhx7aVyJZEoBz3VGc6R6S3Fisp7U"/>
+<div class="absolute inset-0 p-10 flex flex-col justify-end">
+<h4 class="text-primary font-headline text-sm tracking-[0.2em] uppercase mb-4">Spotlight</h4>
+<h3 class="text-4xl font-headline font-bold text-white leading-tight mb-4">Christopher Nolan:<br/>Master of Time</h3>
+<p class="text-on-surface-variant max-w-sm">Explore the recursive narratives and practical effects of cinema's most ambitious architect.</p>
+</div>
+</div>
+<div class="col-span-2 row-span-1 rounded-lg bg-surface-container-high p-8 flex items-center justify-between group cursor-pointer hover:bg-surface-variant transition-colors">
+<div>
+<h4 class="text-tertiary text-sm font-bold uppercase mb-2">New Arrival</h4>
+<h3 class="text-2xl font-headline font-bold text-white">The Zone of Interest</h3>
+<p class="text-on-surface-variant text-sm mt-1">Jonathan Glazer's haunting masterpiece.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-4xl group-hover:translate-x-2 transition-transform">chevron_right</span>
+</div>
+<div class="col-span-1 row-span-1 rounded-lg bg-primary-container p-8 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-on-primary text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">stars</span>
+<h3 class="text-xl font-headline font-bold text-on-primary">Top 100</h3>
+<p class="text-on-primary/80 text-sm">Critically acclaimed essentials.</p>
+</div>
+<div class="col-span-1 row-span-1 rounded-lg bg-surface-container p-8 flex flex-col justify-center items-center text-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-5xl mb-4">history</span>
+<h3 class="text-xl font-headline font-bold text-white">Rewatch</h3>
+<p class="text-on-surface-variant text-sm">Continue where you left off.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating UI: Genre Pill or Similar -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+<div class="bg-surface-container-low/70 backdrop-blur-3xl px-6 py-3 rounded-full flex items-center gap-8 shadow-2xl border border-white/5">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Discover</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Watchlist</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Tickets</span>
+</button>
+<div class="w-[1px] h-8 bg-outline-variant/20"></div>
+<button class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young man with neutral expression, professional studio lighting, blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiOJz4JoteIfYaaIZmoStvQtoxMAQZJUbK9vVkhEfEzmPVhSf83IjuvOas4-v6unJF2ZrzXJwCBh9Qr5VH1YqNeNQKK4IkuuSlWx46Xzd83vbWg4PTDj2Krc0NBSzuuaaxeBUOkBb2EB6KMhDK3XgqMJymHV1xfUZ2RW2xPcSCimSIEz5B8x39HGoTp2IS7ZGO7EY4w4Apax_YHbTKWzRFBfCaORZt9fWg8DdiUKotgeG5Z-S-RuHPD5AFN4fgVzCSVmT0k_MG2VE"/>
+</button>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/movies');
+    const movies = await res.json();
+    const grid = document.querySelector('.masonry-grid') || document.querySelector('section .grid');
+    if (grid && movies.length > 0) {
+      grid.innerHTML = movies.map(movie => `
+        <a href="movie_details.html?id=${movie.id}" class="group relative h-[500px] rounded-lg overflow-hidden bg-surface-container-low block">
+          <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="${movie.poster_url}" alt="${movie.title}">
+          <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 p-8 w-full">
+            <h3 class="text-3xl font-headline font-bold text-white mb-2">${movie.title}</h3>
+            <p class="text-primary text-sm font-bold">$${movie.price.toFixed(2)}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+  } catch (err) {
+    console.error(err);
+  }
+});
+</script>
+</body></html>
